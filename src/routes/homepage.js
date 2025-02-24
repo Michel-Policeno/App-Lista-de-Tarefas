@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const path = require("node:path");
+const taskListController = require("../controllers/taskList.controller");
 
-router.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../views/homepage.html"));
-});
+router.get("/", taskListController.homepage);
+
+router.post("/litagemtarefas", taskListController.listarTarefas);
 
 module.exports = router;
