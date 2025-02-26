@@ -5,6 +5,6 @@ const taskListController = require("../controllers/taskList.controller");
 
 router.get("/", taskListController.homepage);
 
-router.post("/litagemtarefas", taskListController.listarTarefas);
+router.get("/litagemtarefas", taskListController.listarTarefas);
 
 module.exports = router;
