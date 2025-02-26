@@ -1,10 +1,14 @@
 const express = require("express");
 const path = require("node:path");
 const homeRoutes = require("./routes/homepage.js");
+const taskRoutes = require("./routes/taskList.js");
 const app = express();
 
 // GET /
 app.use(homeRoutes);
+
+// POST /LISTAGEM
+app.use(taskRoutes);
 
 //configurar EJS
 app.set("view engine", "ejs");
