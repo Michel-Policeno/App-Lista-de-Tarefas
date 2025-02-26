@@ -3,8 +3,6 @@ const router = express.Router();
 const path = require("node:path");
 const taskListController = require("../controllers/taskList.controller");
 
-router.get("/", taskListController.homepage);
-
-router.post("/litagemtarefas", taskListController.listarTarefas);
+router.post("/litagemtarefas/delete/:id", taskListController.delete);
 
 module.exports = router;
