@@ -8,7 +8,7 @@ const allTaskList = [
     task: [
       {
         id: Date.now(),
-        name: "limparCasa",
+        name: "varrer casa",
         dateCreatead: new Date().toUTCString(),
         description: "varrer e passa pano na cozinha e também sala",
         check: false,
@@ -17,18 +17,18 @@ const allTaskList = [
       },
       {
         id: Date.now(),
-        name: "limparCasa",
+        name: "lavar banheiro",
         dateCreatead: new Date().toUTCString(),
-        description: "varrer e passa pano na cozinha e também sala",
+        description: "lavar box e pia",
         check: false,
         idTaskList: "idTaksCasa",
         user: "123",
       },
       {
         id: Date.now(),
-        name: "limparCasa",
+        name: "descongela geladeira",
         dateCreatead: new Date().toUTCString(),
-        description: "varrer e passa pano na cozinha e também sala",
+        description: "desligar a noite",
         check: false,
         idTaskList: "idTaksCasa",
         user: "123",
