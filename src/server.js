@@ -20,6 +20,9 @@ app.use(express.static("public"));
 //configuração ler dados da requisição
 app.use(express.urlencoded({ extended: true }));
 
+//configura json
+app.use(express.json());
+
 const PORT = 3000;
 app.listen(PORT, () =>
   console.log(`Servidor Iniciado com sucesso. http://localhost:${PORT}/`)

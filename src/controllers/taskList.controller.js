@@ -6,7 +6,7 @@ const taskListController = {
     res.render(path.resolve(__dirname, "../views/homepage"));
   },
 
-  listarTarefas: (req, res) => {
+  listTasks: (req, res) => {
     const allTask = taskList.showAll();
     res.render(path.resolve(__dirname, "../views/taskList"), { allTask });
   },
@@ -19,6 +19,16 @@ const taskListController = {
   delete: (req, res) => {
     const idDelete = req.params.id;
     taskList.delete(idDelete);
+    const allTask = taskList.showAll();
+    res.render(path.resolve(__dirname, "../views/taskList"), { allTask });
+  },
+
+  update: (req, res) => {
+    const idUpdate = req.params.id;
+    const newNome = req.body;
+    console.log(newNome);
+    console.log(idUpdate);
+    taskList.update(idUpdate, newNome);
     const allTask = taskList.showAll();
     res.render(path.resolve(__dirname, "../views/taskList"), { allTask });
   },

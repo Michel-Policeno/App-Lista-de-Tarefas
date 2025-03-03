@@ -2,9 +2,7 @@ const allTaskList = [
   {
     id: Date.now(),
     name: "casa",
-    description: "limpeza casa",
     dateCreated: new Date().toUTCString(),
-    user: "123",
     task: [
       {
         id: Date.now(),
@@ -15,32 +13,12 @@ const allTaskList = [
         idTaskList: "idTaksCasa",
         user: "123",
       },
-      {
-        id: Date.now(),
-        name: "lavar banheiro",
-        dateCreatead: new Date().toUTCString(),
-        description: "lavar box e pia",
-        check: false,
-        idTaskList: "idTaksCasa",
-        user: "123",
-      },
-      {
-        id: Date.now(),
-        name: "descongela geladeira",
-        dateCreatead: new Date().toUTCString(),
-        description: "desligar a noite",
-        check: false,
-        idTaskList: "idTaksCasa",
-        user: "123",
-      },
     ],
   },
   {
     id: Date.now(),
     name: "trabalho",
-    description: "agenda trabalho",
     dateCreated: new Date().toUTCString(),
-    user: "0007",
     task: [
       {
         id: Date.now(),
@@ -53,46 +31,37 @@ const allTaskList = [
       },
     ],
   },
-  {
-    id: Date.now(),
-    name: "igreja",
-    description: "sem descrição",
-    dateCreated: new Date().toUTCString(),
-    user: "0007",
-    task: [],
-  },
 ];
 
-// id, name, description, dateCreated, user
+// id, name, dateCreated, task[]
 const taskList = {
   showAll() {
     return allTaskList;
   },
 
-  create(name, description) {
+  create(name) {
     const newTalk = {
       id: Date.now(),
       name,
-      description,
       dateCreated: new Date().toUTCString(),
-      user: "id do usuario",
+      task: [],
     };
     return newTalk;
   },
 
-  save(nameTaskList, descriptionTaskList) {
-    const newTalks = this.create(nameTaskList, descriptionTaskList);
+  save(nameTaskList) {
+    const newTalks = this.create(nameTaskList);
     return allTaskList.unshift(newTalks);
   },
 
-  update(idList, newNameTaskList, newDescriptionTaskList) {
+  update(idList, newNameTaskList) {
     const indexUpdate = allTaskList.findIndex(
-      (taskList) => taskList.id === idList
+      (taskList) => taskList.id == idList
     );
     if (indexUpdate === -1) {
       return console.log("id não encontrado");
     }
-    const taskUpdate = this.create(newNameTaskList, newDescriptionTaskList);
+    const taskUpdate = this.create(newNameTaskList);
     return allTaskList.splice(indexUpdate, 1, taskUpdate);
   },
 

@@ -3,24 +3,20 @@ const tasks = [
     id: new Date.now(),
     name: "limparCasa",
     dateCreatead: new Date().toUTCString(),
-    description: "varrer e passa pano na cozinha e também sala",
     check: false,
     idTaskList: "idTaksCasa",
-    user: "123",
   },
 
   {
     id: new Date.now(),
     name: "fazer comprar",
     dateCreatead: new Date().toUTCString(),
-    description: "fazer lista de compras",
     check: false,
     idTaskList: "idTaksCasa",
-    user: "123",
   },
 ];
 
-// id, nome, data_criacao, descrição ,tarefa-feita(boleano), id lista original da tarefe
+// id, nome, data_criacao, tarefa-feita(boleano), idLista(fk)
 const task = {
   show(idTask) {
     return task.find((element) => element.id === idTask);
