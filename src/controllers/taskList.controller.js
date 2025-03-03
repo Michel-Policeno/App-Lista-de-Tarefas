@@ -11,6 +11,11 @@ const taskListController = {
     res.render(path.resolve(__dirname, "../views/taskList"), { allTask });
   },
 
+  newTask: (req, res) => {
+    const allTask = taskList.showAll();
+    res.render(path.resolve(__dirname, "../views/newTask"), { allTask });
+  },
+
   delete: (req, res) => {
     const idDelete = req.params.id;
     taskList.delete(idDelete);

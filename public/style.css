@@ -1,0 +1,30 @@
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+footer {
+  padding-top: 10rem;
+  text-align: center;
+}
+
+/* pág taskList.ejs */
+.list-group {
+  margin: auto;
+  width: 48rem;
+  padding-top: 2rem;
+
+  align-content: center;
+}
+
+/* centralizar botões de ação */
+.btn-actions {
+  margin-top: auto;
+  margin-block: auto;
+  margin-right: 1rem;
+}
+
+.task-li {
+  margin-top: auto;
+  margin-block: auto;
+}
