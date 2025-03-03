@@ -23,3 +23,8 @@ footer {
   margin-block: auto;
   margin-right: 1rem;
 }
+
+.task-li {
+  margin-top: auto;
+  margin-block: auto;
+}

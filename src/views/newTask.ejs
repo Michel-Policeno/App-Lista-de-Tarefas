@@ -35,17 +35,14 @@
       <!-- task -->
       <% allTask[0].task.forEach(element => { %>
       <label class="list-group-item d-flex gap-2">
-        <input
-          class="form-check-input flex-shrink-0"
-          type="checkbox"
-          value=""
-        />
-        <span>
-          <%= element.name %>
-          <small class="d-block text-body-secondary"
-            ><%= element.description %></small
-          >
-        </span>
+        <div class="task-li">
+          <input
+            class="form-check-input flex-shrink-0"
+            type="checkbox"
+            value=""
+          />
+          <span> <%= element.name %> </span>
+        </div>
         <div class="btn-actions ms-auto p-2">
           <button type="button" class="btn btn-warning">✏️</button>
           <button type="button" class="btn btn-danger">🗑️</button>

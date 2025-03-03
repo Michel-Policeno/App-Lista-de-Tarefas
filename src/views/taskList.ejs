@@ -31,20 +31,19 @@
     </div>
 
     <!-- Todas as listas de tarefas -->
-    <ol class="list-group list-group-numbered">
+    <ol class="list-group list-group">
       <% allTask.forEach((element) => { %>
 
       <li
         class="list-group-item d-flex justify-content-between align-items-start"
       >
-        <div class="ms-2 me-auto">
+        <div class="ms-2 me-auto task-li">
           <div class="fw-bold">
             <%= element.name %>
             <span class="badge text-bg-primary rounded-pill"
               ><%= element.task.length %></span
             >
           </div>
-          <%= element.description %>
         </div>
 
         <div class="btn-actions">
