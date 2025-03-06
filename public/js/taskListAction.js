@@ -5,7 +5,7 @@ const inputNameTaskList = document.getElementById("input-name-task");
 //adicionar eventListener para todos os botões de ação
 btnAction.forEach((btnClick) => {
   btnClick.addEventListener("click", (ev) => {
-    const [action, idBtn] = ev.target.id.split("-"); //separando do id as informações de acão e identificado unico da tarefa
+    const [action, idBtn] = ev.target.id.split("-");
     runActionBtn(action, idBtn);
   });
 });
