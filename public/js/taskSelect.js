@@ -4,16 +4,47 @@ const inputNameTask = document.getElementById("input-name-task");
 
 btnAction.forEach((btnClick) => {
   btnClick.addEventListener("click", (ev) => {
-    console.log("botão click");
+    const [action, idBtn] = ev.target.id.split("-");
+    runActionBtnTask(action, idBtn);
   });
 });
 
+async function runActionBtnTask(actionBtn, idTask) {
+  switch (actionBtn) {
+    case "editar":
+      const newNameTask = prompt("Digite o novo nome da tarefa");
+      if (!newNameTask.trim()) {
+        alert("nome da tarefa inválido!");
+        return;
+      }
+      await fetch(location.href + `/${idTask}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ newName: newNameTask }),
+      })
+        .then(() => {
+          location.reload(); // Recarregar a página para atualizar a lista
+        })
+        .catch((err) => console.error("erro ao editar tarefa", err));
+
+      break;
+    case "deletar":
+      break;
+    default:
+      break;
+  }
+}
+
+//criar novas tarefas
 btnCreateTask.addEventListener("click", async (ev) => {
   const nameTask = inputNameTask.value;
   if (!nameTask.trim()) {
     return alert("nome da tarefa é obrigatório");
   }
   await fetch(location.href, {
+    //utilizando a url current para obter o id da lista que estamos acessando
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -21,7 +52,7 @@ btnCreateTask.addEventListener("click", async (ev) => {
     body: JSON.stringify({ name: nameTask }),
   })
     .then(() => {
-      location.reload(); // Recarregar a página para adicionar nova tarefa
+      location.reload();
     })
     .catch((err) => console.error("erro criar nova tarefa", err));
 });

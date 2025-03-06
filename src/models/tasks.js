@@ -62,7 +62,7 @@ const task = {
   },
 
   update(idUpdate, newName) {
-    const indexUpdate = tasks.findIndex((task) => task.id === idUpdate);
+    const indexUpdate = tasks.findIndex((task) => task.id === Number(idUpdate));
 
     //verifica se alguma tarefa foi encontrada
     if (indexUpdate === -1) {

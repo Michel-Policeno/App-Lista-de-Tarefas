@@ -20,6 +20,20 @@ const tasksController = {
       tasks,
     });
   },
+
+  update: (req, res) => {
+    const { idList, idTask } = req.params;
+    const { newName } = req.body;
+    task.update(idTask, newName);
+
+    //exibir tudo
+    const taskSelect = taskList.show(idList);
+    const tasks = task.showAllTaskListSelect(idList);
+    res.render(path.resolve(__dirname, "../views/taskListSelect"), {
+      taskSelect,
+      tasks,
+    });
+  },
 };
 
 module.exports = tasksController;
