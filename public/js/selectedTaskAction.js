@@ -1,25 +1,10 @@
 const btnAction = document.querySelectorAll(".btn-actions");
 const btnCreateTask = document.getElementById("btn-create-task");
 const inputNameTask = document.getElementById("input-name-task");
+import utils from "./utils.js";
 
-// btnAction.forEach((btnClick) => {
-//   btnClick.addEventListener("click", (ev) => {
-//     const [action, idBtn] = ev.target.id.split("-");
-//     runActionBtnTask(action, idBtn);
-//   });
-// });
-
-function btnActionViews(buttons, runActionBtn) {
-  buttons.forEach((btnClick) => {
-    btnClick.addEventListener("click", (ev) => {
-      //separando do id as informações de acão e identificado unico da tarefa
-      const [action, idBtn] = ev.target.id.split("-");
-      runActionBtn(action, idBtn);
-    });
-  });
-}
-btnActionViews(btnAction, runActionBtnTask);
-
+//AddEventListener as buttons que execução as ações
+utils.btnActionViews(btnAction, runActionBtnTask);
 async function runActionBtnTask(actionBtn, idTask) {
   switch (actionBtn) {
     case "editar":
