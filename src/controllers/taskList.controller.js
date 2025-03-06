@@ -24,11 +24,9 @@ const taskListController = {
   },
 
   update: (req, res) => {
-    const idUpdate = req.params.id;
-    const newNome = req.body;
-    console.log(newNome);
-    console.log(idUpdate);
-    taskList.update(idUpdate, newNome);
+    const { id } = req.params;
+    const { name } = req.body;
+    taskList.update(id, name);
     const allTask = taskList.showAll();
     res.render(path.resolve(__dirname, "../views/taskList"), { allTask });
   },

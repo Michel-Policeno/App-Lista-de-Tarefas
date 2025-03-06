@@ -4,24 +4,17 @@ const homeRoutes = require("./routes/homepage.js");
 const taskRoutes = require("./routes/taskList.js");
 const app = express();
 
-// GET /
-app.use(homeRoutes);
-
-// POST /LISTAGEM
-app.use(taskRoutes);
-
+app.use(express.json()); //habilita json
+app.use(express.urlencoded({ extended: true })); //configuração ler dados da requisição
 //configurar EJS
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-//configuração arquivos Estaticos
-app.use(express.static("public"));
+app.use(express.static("public")); //configuração arquivos Estaticos
 
-//configuração ler dados da requisição
-app.use(express.urlencoded({ extended: true }));
-
-//configura json
-app.use(express.json());
+//rotas
+app.use(homeRoutes);
+app.use(taskRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () =>
