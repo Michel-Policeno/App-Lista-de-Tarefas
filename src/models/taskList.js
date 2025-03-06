@@ -58,13 +58,13 @@ const taskList = {
   },
 
   create(name) {
-    const newTalk = {
+    const newTask = {
       id: Date.now(),
       name,
       dateCreated: new Date().toUTCString(),
       task: [],
     };
-    return newTalk;
+    return allTaskList.unshift(newTask);
   },
 
   save(nameTaskList) {

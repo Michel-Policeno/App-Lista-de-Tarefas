@@ -1,0 +1,8 @@
+função para analisar se tem nome iguais nas listas. 
+Caso tenha nome igual adicionar um numero
+
+
+nome da listagem na hora de excluir
+modal personalizado
+
+
