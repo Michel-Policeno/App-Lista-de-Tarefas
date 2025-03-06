@@ -1,15 +1,10 @@
 const btnAction = document.querySelectorAll(".btn-action");
 const btnNewTaskList = document.getElementById("btn-new-Task-List");
 const inputNameTaskList = document.getElementById("input-name-task");
+import utils from "./utils.js";
 
-//adicionar eventListener para todos os botões de ação
-btnAction.forEach((btnClick) => {
-  btnClick.addEventListener("click", (ev) => {
-    const [action, idBtn] = ev.target.id.split("-");
-    runActionBtn(action, idBtn);
-  });
-});
-
+//AddEventListener as buttons que execução as ações
+utils.btnActionViews(btnAction, runActionBtn);
 async function runActionBtn(actionBtn, iDBtn) {
   //executa as respectivas ações dos btn
   switch (actionBtn) {
