@@ -73,13 +73,15 @@ const task = {
   },
 
   delete(idDelete) {
-    const indexTaskDelete = tasks.findIndex((task) => task.id === idDelete);
+    const indexTaskDelete = tasks.findIndex(
+      (task) => task.id === Number(idDelete)
+    );
     //verifica se alguma tarefa foi encontrada
     if (indexTaskDelete === -1) {
       return console.log("id não encontrado");
     }
     //remove tarefa
-    return task.splice(indexTaskDelete, 1);
+    return tasks.splice(indexTaskDelete, 1);
   },
 };
 

@@ -31,8 +31,17 @@ async function runActionBtnTask(actionBtn, idTask) {
 
       break;
     case "deletar":
+      await fetch(location.href + `/${idTask}`, {
+        method: "DELETE",
+      })
+        .then(() => {
+          location.reload(); // Recarregar a página para atualizar a lista
+        })
+        .catch((err) => console.error("erro ao excluir tarefa", err));
       break;
+
     default:
+      console.log("opção inválida");
       break;
   }
 }
