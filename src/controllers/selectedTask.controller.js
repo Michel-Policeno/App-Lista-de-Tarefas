@@ -1,6 +1,6 @@
 const path = require("node:path");
-const taskList = require("../models/taskList");
-const task = require("../models/tasks");
+const taskList = require("../models/taskList.model");
+const task = require("../models/selectedTask.model");
 
 const tasksController = {
   showTask: (idList) => {
@@ -15,7 +15,7 @@ const tasksController = {
     //exibir tudo
     const taskSelect = taskList.show(idList);
     const tasks = task.showAllTaskListSelect(idList);
-    res.render(path.resolve(__dirname, "../views/taskListSelect"), {
+    res.render(path.resolve(__dirname, "../views/selectedTask"), {
       taskSelect,
       tasks,
     });
@@ -29,7 +29,7 @@ const tasksController = {
     //exibir tudo
     const taskSelect = taskList.show(idList);
     const tasks = task.showAllTaskListSelect(idList);
-    res.render(path.resolve(__dirname, "../views/taskListSelect"), {
+    res.render(path.resolve(__dirname, "../views/selectedTask"), {
       taskSelect,
       tasks,
     });
@@ -42,7 +42,7 @@ const tasksController = {
     //exibir tudo
     const taskSelect = taskList.show(idList);
     const tasks = task.showAllTaskListSelect(idList);
-    res.render(path.resolve(__dirname, "../views/taskListSelect"), {
+    res.render(path.resolve(__dirname, "../views/selectedTask"), {
       taskSelect,
       tasks,
     });

@@ -1,6 +1,6 @@
 const path = require("node:path");
-const taskList = require("../models/taskList");
-const task = require("../models/tasks");
+const taskList = require("../models/taskList.model");
+const task = require("../models/selectedTask.model");
 
 const taskListController = {
   homepage: (req, res) => {
@@ -61,7 +61,7 @@ const taskListController = {
     const { id } = req.params;
     const taskSelect = taskList.show(id);
     const tasks = task.showAllTaskListSelect(id);
-    res.render(path.resolve(__dirname, "../views/taskListSelect"), {
+    res.render(path.resolve(__dirname, "../views/selectedTask"), {
       taskSelect,
       tasks,
     });
