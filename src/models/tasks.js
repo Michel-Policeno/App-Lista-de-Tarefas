@@ -52,7 +52,7 @@ const task = {
 
   create(name, idList) {
     const newTask = {
-      id: new Date.now(),
+      id: Date.now(),
       name,
       dateCreatead: new Date().toUTCString(),
       check: false,

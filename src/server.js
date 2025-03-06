@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("node:path");
 const homeRoutes = require("./routes/homepage.js");
-const taskRoutes = require("./routes/taskList.js");
+const taskListRoutes = require("./routes/taskList.js");
+const taskRoutes = require("./routes/task.js");
 const app = express();
 
 app.use(express.json()); //habilita json
@@ -15,6 +16,7 @@ app.use(express.static("public")); //configuração arquivos Estaticos
 //rotas
 app.use(homeRoutes);
 app.use(taskRoutes);
+app.use(taskListRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () =>

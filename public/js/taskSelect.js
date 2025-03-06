@@ -8,6 +8,20 @@ btnAction.forEach((btnClick) => {
   });
 });
 
-btnCreateTask.addEventListener("click", (ev) => {
-  console.log(inputNameTask.value);
+btnCreateTask.addEventListener("click", async (ev) => {
+  const nameTask = inputNameTask.value;
+  if (!nameTask.trim()) {
+    return alert("nome da tarefa é obrigatório");
+  }
+  await fetch(location.href, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name: nameTask }),
+  })
+    .then(() => {
+      location.reload(); // Recarregar a página para adicionar nova tarefa
+    })
+    .catch((err) => console.error("erro criar nova tarefa", err));
 });
