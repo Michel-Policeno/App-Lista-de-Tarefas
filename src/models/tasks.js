@@ -1,58 +1,75 @@
 const tasks = [
   {
-    id: new Date.now(),
-    name: "limparCasa",
+    id: Date.now(),
+    name: "lavar banheiro",
     dateCreatead: new Date().toUTCString(),
     check: false,
-    idTaskList: "idTaksCasa",
+    idTaskList: 123,
   },
-
   {
-    id: new Date.now(),
-    name: "fazer comprar",
+    id: Date.now(),
+    name: "varrer",
     dateCreatead: new Date().toUTCString(),
     check: false,
-    idTaskList: "idTaksCasa",
+    idTaskList: 123,
   },
+  // {
+  //   id: Date.now(),
+  //   name: "varrer",
+  //   dateCreatead: new Date().toUTCString(),
+  //   check: false,
+  //   idTaskList: "idTaksTrabalho",
+  // },
+  // {
+  //   id: Date.now(),
+  //   name: "lavar banheiro",
+  //   dateCreatead: new Date().toUTCString(),
+  //   check: false,
+  //   idTaskList: "idTaksCasa",
+  // },
+  // {
+  //   id: Date.now(),
+  //   name: "varrer",
+  //   dateCreatead: new Date().toUTCString(),
+  //   check: false,
+  //   idTaskList: "idTaksCasa",
+  // },
 ];
 
 // id, nome, data_criacao, tarefa-feita(boleano), idLista(fk)
 const task = {
-  show(idTask) {
-    return task.find((element) => element.id === idTask);
+  showAll(idTask) {
+    return tasks;
   },
 
-  showAll() {
-    return task;
+  showTask(idTask) {
+    return tasks.find((element) => element.id === idTask);
   },
 
-  create(name, description) {
-    const newTalks = {
+  showAllTaskListSelect(idList) {
+    return tasks.filter((element) => element.idTaskList === Number(idList));
+  },
+
+  create(name, idList) {
+    const newTask = {
       id: new Date.now(),
       name,
       dateCreatead: new Date().toUTCString(),
-      description,
       check: false,
-      idTaskList: "valor recebido",
-      user: "userCadastrado",
+      idTaskList: Number(idList),
     };
-    return newTalks;
+    return tasks.unshift(newTask);
   },
 
-  save(name, description) {
-    const newTasks = this.create(name, description);
-    return tasks.unshift(newTasks);
-  },
-
-  update(idUpdate, name, description) {
+  update(idUpdate, newName) {
     const indexUpdate = tasks.findIndex((task) => task.id === idUpdate);
 
+    //verifica se alguma tarefa foi encontrada
     if (indexUpdate === -1) {
       return console.log("id não encontrado");
     }
-    //atualiza tarefa, removendo anterior e atribuindo uma nova no lugar
-    const taskUpdate = this.create(name, description);
-    return tasks.splice(indexUpdate, 1, taskUpdate);
+    //atualiza o nome da tarefa
+    tasks[indexUpdate].name = newName;
   },
 
   delete(idDelete) {
@@ -65,3 +82,5 @@ const task = {
     return task.splice(indexTaskDelete, 1);
   },
 };
+
+module.exports = task;

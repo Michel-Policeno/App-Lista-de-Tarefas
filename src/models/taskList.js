@@ -1,58 +1,28 @@
 const allTaskList = [
   {
-    id: Date.now(),
+    id: 123,
     name: "casa",
     dateCreated: new Date().toUTCString(),
-    task: [
-      {
-        id: Date.now(),
-        name: "varrer casa",
-        dateCreatead: new Date().toUTCString(),
-        description: "varrer e passa pano na cozinha e também sala",
-        check: false,
-        idTaskList: "idTaksCasa",
-        user: "123",
-      },
-      {
-        id: Date.now(),
-        name: "lavar roupa",
-        dateCreatead: new Date().toUTCString(),
-        description: "varrer e passa pano na cozinha e também sala",
-        check: false,
-        idTaskList: "idTaksCasa",
-        user: "123",
-      },
-      {
-        id: Date.now(),
-        name: "fazer comida",
-        dateCreatead: new Date().toUTCString(),
-        description: "varrer e passa pano na cozinha e também sala",
-        check: false,
-        idTaskList: "idTaksCasa",
-        user: "123",
-      },
-    ],
   },
   {
     id: Date.now(),
     name: "trabalho",
     dateCreated: new Date().toUTCString(),
-    task: [
-      {
-        id: Date.now(),
-        name: "limparCasa",
-        dateCreatead: new Date().toUTCString(),
-        description: "varrer e passa pano na cozinha e também sala",
-        check: false,
-        idTaskList: "idTaksCasa",
-        user: "123",
-      },
-    ],
   },
 ];
 
 // id, name, dateCreated, task[]
 const taskList = {
+  show(idList) {
+    const indexTask = allTaskList.findIndex(
+      (task) => task.id === Number(idList)
+    );
+    if (indexTask === -1) {
+      return console.log("id não encontrado");
+    }
+    return allTaskList[indexTask];
+  },
+
   showAll() {
     return allTaskList;
   },
@@ -62,7 +32,6 @@ const taskList = {
       id: Date.now(),
       name,
       dateCreated: new Date().toUTCString(),
-      task: [],
     };
     return allTaskList.unshift(newTask);
   },

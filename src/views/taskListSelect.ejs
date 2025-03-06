@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B-Productive</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body class="bg-dark text-white">
+  <!-- header fixo -->
+  <%- include('partials/header') %>
+
+    <div class="container mt-5">
+      <div class="text-center">
+        <h1 class="fw-bold">
+          <%= taskSelect.name %>
+        </h1>
+      </div>
+
+      <!-- Criar Nova Tarefa -->
+      <div class="d-flex justify-content-center my-4">
+        <input type="text" class="form-control w-50 me-2" id="input-name-task" placeholder="Nome tarefa" />
+        <button class="btn btn-primary" id="btn-create-task">
+          Criar tarefa
+        </button>
+      </div>
+    </div>
+
+    <!-- listagem de tarefas -->
+    <div class="list-group">
+      <!-- task -->
+      <% tasks.filter((task)=>task.idTaskList === taskSelect.id).forEach(element=> { %>
+        <label class="list-group-item d-flex gap-2">
+          <div class="task-li">
+            <input class="form-check-input flex-shrink-0" type="checkbox" value="" />
+            <span>
+              <%= element.name %>
+            </span>
+          </div>
+          <div class="btn-actions ms-auto p-2">
+            <button type="button" class="btn btn-warning">✏️</button>
+            <button type="button" class="btn btn-danger">🗑️</button>
+          </div>
+        </label>
+        <% }) %>
+    </div>
+
+    <!-- footer fixo -->
+    <%- include('partials/footer') %>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="/js/taskSelect.js"></script>
+</body>
+
+</html>

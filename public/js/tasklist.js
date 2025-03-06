@@ -14,7 +14,7 @@ async function runActionBtn(actionBtn, iDBtn) {
   //executa as respectivas ações dos btn
   switch (actionBtn) {
     case "abrir":
-      window.location.href = `/litagemtarefas/${iDBtn}`;
+      window.location.href = `/litagemtarefas/lista/${iDBtn}`;
       break;
 
     case "delete":
@@ -57,11 +57,9 @@ async function runActionBtn(actionBtn, iDBtn) {
 //adicionar eventListener para btn Criar Nova Lista
 btnNewTaskList.addEventListener("click", async () => {
   let nameNewTaskList = inputNameTaskList.value;
-  console.log(nameNewTaskList);
   if (!nameNewTaskList.trim()) {
     nameNewTaskList = "listagem de tarefa sem nome";
   }
-  console.log(nameNewTaskList);
   await fetch("/litagemtarefas/", {
     method: "POST",
     headers: {

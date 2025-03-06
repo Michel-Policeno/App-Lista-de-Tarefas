@@ -4,8 +4,9 @@ const path = require("node:path");
 const taskListController = require("../controllers/taskList.controller");
 
 router.delete("/litagemtarefas/:id", taskListController.delete);
-router.get("/novatarefa", taskListController.newTask);
+//router.get("/novatarefa", taskListController.newTask);
 router.put("/litagemtarefas/:id", taskListController.update);
 router.post("/litagemtarefas", taskListController.newTaskList);
+router.get("/litagemtarefas/lista/:id", taskListController.taskListSelect);
 
 module.exports = router;

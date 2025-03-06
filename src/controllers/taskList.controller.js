@@ -1,5 +1,6 @@
 const path = require("node:path");
 const taskList = require("../models/taskList");
+const task = require("../models/tasks");
 
 const taskListController = {
   homepage: (req, res) => {
@@ -8,13 +9,11 @@ const taskListController = {
 
   listTasks: (req, res) => {
     const allTask = taskList.showAll();
-    res.render(path.resolve(__dirname, "../views/taskList"), { allTask });
-  },
-
-  //alterar essa parte, não teremos essa pagina de nova tarefa
-  newTask: (req, res) => {
-    const allTask = taskList.showAll();
-    res.render(path.resolve(__dirname, "../views/newTask"), { allTask });
+    const tasks = task.showAll();
+    res.render(path.resolve(__dirname, "../views/taskList"), {
+      allTask,
+      tasks,
+    });
   },
 
   delete: (req, res) => {
@@ -22,7 +21,11 @@ const taskListController = {
     taskList.delete(idDelete);
     //devolver todas as listas
     const allTask = taskList.showAll();
-    res.render(path.resolve(__dirname, "../views/taskList"), { allTask });
+    const tasks = task.showAll();
+    res.render(path.resolve(__dirname, "../views/taskList"), {
+      allTask,
+      tasks,
+    });
   },
 
   update: (req, res) => {
@@ -31,7 +34,11 @@ const taskListController = {
     taskList.update(id, name);
     //devolver todas as listas
     const allTask = taskList.showAll();
-    res.render(path.resolve(__dirname, "../views/taskList"), { allTask });
+    const tasks = task.showAll();
+    res.render(path.resolve(__dirname, "../views/taskList"), {
+      allTask,
+      tasks,
+    });
   },
 
   newTaskList: (req, res) => {
@@ -43,7 +50,21 @@ const taskListController = {
 
     //devolver todas as listas
     const allTask = taskList.showAll();
-    res.render(path.resolve(__dirname, "../views/taskList"), { allTask });
+    const tasks = task.showAll();
+    res.render(path.resolve(__dirname, "../views/taskList"), {
+      allTask,
+      tasks,
+    });
+  },
+
+  taskListSelect: (req, res) => {
+    const { id } = req.params;
+    const taskSelect = taskList.show(id);
+    const tasks = task.showAllTaskListSelect(id);
+    res.render(path.resolve(__dirname, "../views/taskListSelect"), {
+      taskSelect,
+      tasks,
+    });
   },
 };
 
