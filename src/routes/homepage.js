@@ -4,8 +4,6 @@ const path = require("node:path");
 const taskListController = require("../controllers/taskList.controller");
 
 router.get("/", taskListController.homepage);
-
-router.get("/litagemtarefas", taskListController.listarTarefas);
-router.get("/novatarefa", taskListController.newTask);
+router.get("/litagemtarefas", taskListController.listTasks);
 
 module.exports = router;

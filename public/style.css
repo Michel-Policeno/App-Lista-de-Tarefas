@@ -13,7 +13,6 @@ footer {
   margin: auto;
   width: 48rem;
   padding-top: 2rem;
-
   align-content: center;
 }
 
@@ -21,7 +20,6 @@ footer {
 .btn-actions {
   margin-top: auto;
   margin-block: auto;
-  margin-right: 1rem;
 }
 
 .task-li {
