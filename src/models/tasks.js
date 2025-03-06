@@ -1,39 +1,11 @@
 const tasks = [
   {
-    id: Date.now(),
-    name: "lavar banheiro",
+    id: 321,
+    name: "Exemplo de tarefa",
     dateCreatead: new Date().toUTCString(),
     check: false,
     idTaskList: 123,
   },
-  {
-    id: Date.now(),
-    name: "varrer",
-    dateCreatead: new Date().toUTCString(),
-    check: false,
-    idTaskList: 123,
-  },
-  // {
-  //   id: Date.now(),
-  //   name: "varrer",
-  //   dateCreatead: new Date().toUTCString(),
-  //   check: false,
-  //   idTaskList: "idTaksTrabalho",
-  // },
-  // {
-  //   id: Date.now(),
-  //   name: "lavar banheiro",
-  //   dateCreatead: new Date().toUTCString(),
-  //   check: false,
-  //   idTaskList: "idTaksCasa",
-  // },
-  // {
-  //   id: Date.now(),
-  //   name: "varrer",
-  //   dateCreatead: new Date().toUTCString(),
-  //   check: false,
-  //   idTaskList: "idTaksCasa",
-  // },
 ];
 
 // id, nome, data_criacao, tarefa-feita(boleano), idLista(fk)
