@@ -1,17 +1,12 @@
 const allTaskList = [
   {
     id: 123,
-    name: "casa",
-    dateCreated: new Date().toUTCString(),
-  },
-  {
-    id: Date.now(),
-    name: "trabalho",
+    name: "Exemplo",
     dateCreated: new Date().toUTCString(),
   },
 ];
 
-// id, name, dateCreated, task[]
+// id, name, dateCreated
 const taskList = {
   show(idList) {
     const indexTask = allTaskList.findIndex(

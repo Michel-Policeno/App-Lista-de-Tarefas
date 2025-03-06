@@ -1,39 +1,11 @@
 const tasks = [
   {
-    id: Date.now(),
-    name: "lavar banheiro",
+    id: 321,
+    name: "Exemplo de tarefa",
     dateCreatead: new Date().toUTCString(),
     check: false,
     idTaskList: 123,
   },
-  {
-    id: Date.now(),
-    name: "varrer",
-    dateCreatead: new Date().toUTCString(),
-    check: false,
-    idTaskList: 123,
-  },
-  // {
-  //   id: Date.now(),
-  //   name: "varrer",
-  //   dateCreatead: new Date().toUTCString(),
-  //   check: false,
-  //   idTaskList: "idTaksTrabalho",
-  // },
-  // {
-  //   id: Date.now(),
-  //   name: "lavar banheiro",
-  //   dateCreatead: new Date().toUTCString(),
-  //   check: false,
-  //   idTaskList: "idTaksCasa",
-  // },
-  // {
-  //   id: Date.now(),
-  //   name: "varrer",
-  //   dateCreatead: new Date().toUTCString(),
-  //   check: false,
-  //   idTaskList: "idTaksCasa",
-  // },
 ];
 
 // id, nome, data_criacao, tarefa-feita(boleano), idLista(fk)
@@ -52,7 +24,7 @@ const task = {
 
   create(name, idList) {
     const newTask = {
-      id: new Date.now(),
+      id: Date.now(),
       name,
       dateCreatead: new Date().toUTCString(),
       check: false,
@@ -62,7 +34,7 @@ const task = {
   },
 
   update(idUpdate, newName) {
-    const indexUpdate = tasks.findIndex((task) => task.id === idUpdate);
+    const indexUpdate = tasks.findIndex((task) => task.id === Number(idUpdate));
 
     //verifica se alguma tarefa foi encontrada
     if (indexUpdate === -1) {
@@ -73,13 +45,15 @@ const task = {
   },
 
   delete(idDelete) {
-    const indexTaskDelete = tasks.findIndex((task) => task.id === idDelete);
+    const indexTaskDelete = tasks.findIndex(
+      (task) => task.id === Number(idDelete)
+    );
     //verifica se alguma tarefa foi encontrada
     if (indexTaskDelete === -1) {
       return console.log("id não encontrado");
     }
     //remove tarefa
-    return task.splice(indexTaskDelete, 1);
+    return tasks.splice(indexTaskDelete, 1);
   },
 };
 
