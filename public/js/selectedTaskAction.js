@@ -61,3 +61,5 @@ btnCreateTask.addEventListener("click", async (ev) => {
     })
     .catch((err) => console.error("erro criar nova tarefa", err));
 });
+
+//marcar tarefa como feita
