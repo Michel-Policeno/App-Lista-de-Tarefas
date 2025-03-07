@@ -1,6 +1,7 @@
 const btnAction = document.querySelectorAll(".btn-actions");
 const btnCreateTask = document.getElementById("btn-create-task");
 const inputNameTask = document.getElementById("input-name-task");
+const inputsCheckTask = document.querySelectorAll(".form-check-input");
 import utils from "./utils.js";
 
 //AddEventListener as buttons que execução as ações
@@ -62,4 +63,12 @@ btnCreateTask.addEventListener("click", async (ev) => {
     .catch((err) => console.error("erro criar nova tarefa", err));
 });
 
-//marcar tarefa como feita
+//add atributo para efeito opaco quando a tarefa é realizada
+inputsCheckTask.forEach((input) => {
+  input.addEventListener("click", (ev) => {
+    let span = document.getElementById(`span-${input.value}`);
+    input.checked
+      ? utils.addAtributeOpacity(input, span)
+      : utils.removeAtributeOpacity(input, span);
+  });
+});
