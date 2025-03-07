@@ -1,8 +1,10 @@
-função para analisar se tem nome iguais nas listas. 
-Caso tenha nome igual adicionar um numero
+*simplificar funçoes nos controlles que exibe tudo e chama as views. Evitação repetição de codigo
+*implementar validações chaves para verificar e tratar possiveis erros
+*criar pagina de erro, caso tenhamos uma solicitação não interpretada
+*modal personalizado
+  -nome da listagem na hora de excluir dentro do modal
+*Caso tenha nome igual adicionar um numero
 
 
-nome da listagem na hora de excluir
-modal personalizado
 
 
