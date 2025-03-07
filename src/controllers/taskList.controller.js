@@ -1,6 +1,6 @@
 const path = require("node:path");
 const taskList = require("../models/taskList.model");
-const sendDadaViews = require("../services/sendDadaViews.js");
+const sendDataViews = require("../services/sendDataViews.js");
 
 const taskListController = {
   homepage: (req, res) => {
@@ -8,20 +8,20 @@ const taskListController = {
   },
 
   listTasks: (req, res) => {
-    sendDadaViews.viewsTaskList(res);
+    sendDataViews.viewsTaskList(res);
   },
 
   delete: (req, res) => {
     const idDelete = req.params.id;
     taskList.delete(idDelete);
-    sendDadaViews.viewsTaskList(res);
+    sendDataViews.viewsTaskList(res);
   },
 
   update: (req, res) => {
     const { id } = req.params;
     const { name } = req.body;
     taskList.update(id, name);
-    sendDadaViews.viewsTaskList(res);
+    sendDataViews.viewsTaskList(res);
   },
 
   newTaskList: (req, res) => {
@@ -31,12 +31,12 @@ const taskListController = {
       console.log("Erro ao Criar nova lista de tarefas");
     }
 
-    sendDadaViews.viewsTaskList(res);
+    sendDataViews.viewsTaskList(res);
   },
 
   taskListSelect: (req, res) => {
     const { id } = req.params;
-    sendDadaViews.viewsSelectedTask(id, res);
+    sendDataViews.viewsSelectedTask(id, res);
   },
 };
 

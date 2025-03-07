@@ -1,5 +1,5 @@
 const task = require("../models/selectedTask.model");
-const sendDadaViews = require("../services/sendDadaViews.js");
+const sendDataViews = require("../services/sendDataViews.js");
 
 const tasksController = {
   showTask: (idList) => {
@@ -10,20 +10,20 @@ const tasksController = {
     const { name } = req.body;
     const { idList } = req.params;
     task.create(name, idList);
-    sendDadaViews.viewsSelectedTask(idList, res);
+    sendDataViews.viewsSelectedTask(idList, res);
   },
 
   update: (req, res) => {
     const { idList, idTask } = req.params;
     const { newName } = req.body;
     task.update(idTask, newName);
-    sendDadaViews.viewsSelectedTask(idList, res);
+    sendDataViews.viewsSelectedTask(idList, res);
   },
 
   delete: (req, res) => {
     const { idList, idTask } = req.params;
     task.delete(idTask);
-    sendDadaViews.viewsSelectedTask(idList, res);
+    sendDataViews.viewsSelectedTask(idList, res);
   },
 };
 

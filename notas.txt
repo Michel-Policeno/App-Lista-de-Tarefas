@@ -1,3 +1,5 @@
+*efeito visual de opacidade precisa ser enviado para backend. Para guarda informação de tarefa feita.
+
 *criar pagina de erro, caso tenhamos uma solicitação não interpretada
 *modal personalizado
   -nome da listagem na hora de excluir dentro do modal
