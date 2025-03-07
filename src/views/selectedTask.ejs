@@ -35,8 +35,8 @@
       <% tasks.filter((task)=>task.idTaskList === taskSelect.id).forEach(element=> { %>
         <label class="list-group-item d-flex gap-2">
           <div class="task-li">
-            <input class="form-check-input flex-shrink-0" type="checkbox" value="" />
-            <span>
+            <input class="form-check-input flex-shrink-0" type="checkbox" value=<%=element.id%> />
+            <span id=<%=element.id%>>
               <%= element.name %>
             </span>
           </div>

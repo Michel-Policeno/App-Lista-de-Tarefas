@@ -1,6 +1,6 @@
 const path = require("node:path");
 const taskList = require("../models/taskList.model");
-const task = require("../models/selectedTask.model");
+const sendDadaViews = require("../services/sendDadaViews.js");
 
 const taskListController = {
   homepage: (req, res) => {
@@ -8,37 +8,20 @@ const taskListController = {
   },
 
   listTasks: (req, res) => {
-    const allTask = taskList.showAll();
-    const tasks = task.showAll();
-    res.render(path.resolve(__dirname, "../views/taskList"), {
-      allTask,
-      tasks,
-    });
+    sendDadaViews.viewsTaskList(res);
   },
 
   delete: (req, res) => {
     const idDelete = req.params.id;
     taskList.delete(idDelete);
-    //devolver todas as listas
-    const allTask = taskList.showAll();
-    const tasks = task.showAll();
-    res.render(path.resolve(__dirname, "../views/taskList"), {
-      allTask,
-      tasks,
-    });
+    sendDadaViews.viewsTaskList(res);
   },
 
   update: (req, res) => {
     const { id } = req.params;
     const { name } = req.body;
     taskList.update(id, name);
-    //devolver todas as listas
-    const allTask = taskList.showAll();
-    const tasks = task.showAll();
-    res.render(path.resolve(__dirname, "../views/taskList"), {
-      allTask,
-      tasks,
-    });
+    sendDadaViews.viewsTaskList(res);
   },
 
   newTaskList: (req, res) => {
@@ -48,23 +31,12 @@ const taskListController = {
       console.log("Erro ao Criar nova lista de tarefas");
     }
 
-    //devolver todas as listas
-    const allTask = taskList.showAll();
-    const tasks = task.showAll();
-    res.render(path.resolve(__dirname, "../views/taskList"), {
-      allTask,
-      tasks,
-    });
+    sendDadaViews.viewsTaskList(res);
   },
 
   taskListSelect: (req, res) => {
     const { id } = req.params;
-    const taskSelect = taskList.show(id);
-    const tasks = task.showAllTaskListSelect(id);
-    res.render(path.resolve(__dirname, "../views/selectedTask"), {
-      taskSelect,
-      tasks,
-    });
+    sendDadaViews.viewsSelectedTask(id, res);
   },
 };
 
