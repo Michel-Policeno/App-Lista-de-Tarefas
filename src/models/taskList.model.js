@@ -1,3 +1,5 @@
+const findElementByID = require("../services/findElementByDB");
+
 const allTaskList = [
   {
     id: 123,
@@ -9,9 +11,7 @@ const allTaskList = [
 // id, name, dateCreated
 const taskList = {
   show(idList) {
-    const indexTask = allTaskList.findIndex(
-      (task) => task.id === Number(idList)
-    );
+    const indexTask = findElementByID(idList, allTaskList);
     if (indexTask === -1) {
       return console.log("id não encontrado");
     }
@@ -37,10 +37,7 @@ const taskList = {
   },
 
   update(idList, newNameTaskList) {
-    //localizar listagem pelo ID
-    const indexUpdate = allTaskList.findIndex(
-      (taskList) => taskList.id == idList
-    );
+    const indexUpdate = findElementByID(idList, allTaskList);
     if (indexUpdate === -1) {
       return console.log("id não encontrado");
     }
@@ -49,10 +46,7 @@ const taskList = {
   },
 
   delete(idList) {
-    //localizar listagem pelo ID
-    const indexDelete = allTaskList.findIndex(
-      (taskList) => taskList.id == idList
-    );
+    const indexDelete = findElementByID(idList, allTaskList);
     if (indexDelete === -1) {
       return console.log("id não encontrado");
     }

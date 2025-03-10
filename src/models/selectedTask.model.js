@@ -1,3 +1,5 @@
+const findElementByID = require("../services/findElementByDB");
+
 const tasks = [
   {
     id: 321,
@@ -34,9 +36,7 @@ const task = {
   },
 
   update(idUpdate, newName) {
-    const indexUpdate = tasks.findIndex((task) => task.id === Number(idUpdate));
-
-    //verifica se alguma tarefa foi encontrada
+    const indexUpdate = findElementByID(idUpdate, tasks);
     if (indexUpdate === -1) {
       return console.log("id não encontrado");
     }
@@ -45,22 +45,16 @@ const task = {
   },
 
   delete(idDelete) {
-    const indexTaskDelete = tasks.findIndex(
-      (task) => task.id === Number(idDelete)
-    );
-    //verifica se alguma tarefa foi encontrada
-    if (indexTaskDelete === -1) {
+    const indexDelete = findElementByID(idDelete, tasks);
+    if (indexDelete === -1) {
       return console.log("id não encontrado");
     }
     //remove tarefa
-    return tasks.splice(indexTaskDelete, 1);
+    return tasks.splice(indexDelete, 1);
   },
 
   toggleCheckTask(idTaskCheck, statusTaskCheck) {
-    const indexTaskCheck = tasks.findIndex(
-      (task) => task.id === Number(idTaskCheck)
-    );
-    //verifica se alguma tarefa foi encontrada
+    const indexTaskCheck = findElementByID(idTaskCheck, tasks);
     if (indexTaskCheck === -1) {
       return console.log("id não encontrado");
     }
