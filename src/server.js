@@ -16,6 +16,9 @@ app.use(express.static("public")); //configuração arquivos Estaticos
 app.use(homeRoutes);
 app.use(selectedTaskRoutes);
 app.use(taskListRoutes);
+app.use((req, res) => {
+  res.status(404).render(path.resolve(__dirname, "./views/pageErro404"));
+});
 
 const PORT = 3000;
 app.listen(PORT, () =>
