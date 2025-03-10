@@ -11,5 +11,9 @@ router.put(
   taskSelectedController.update
 );
 router.post("/litagemtarefas/lista/:idList", taskSelectedController.createTask);
+router.put(
+  "/litagemtarefas/lista/:idList/:idTask/:check",
+  taskSelectedController.checkTask
+);
 
 module.exports = router;

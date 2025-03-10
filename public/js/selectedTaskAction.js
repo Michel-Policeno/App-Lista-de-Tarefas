@@ -2,9 +2,35 @@ const btnAction = document.querySelectorAll(".btn-actions");
 const btnCreateTask = document.getElementById("btn-create-task");
 const inputNameTask = document.getElementById("input-name-task");
 const inputsCheckTask = document.querySelectorAll(".form-check-input");
+const taskCheckTrue = document.querySelectorAll(".check-true");
 import utils from "./utils.js";
 
-//AddEventListener as buttons que execução as ações
+//inicia adicionando efeito opacity nas tarefas marcadas anteriormente com feitas
+taskCheckTrue.forEach((element) => {
+  element.setAttribute("name", "opacity");
+  element.checked = true;
+});
+
+//add atributo para efeito opacity quando a tarefa é realizada
+inputsCheckTask.forEach((input) => {
+  input.addEventListener("click", async (ev) => {
+    const idTask = input.value;
+    let span = document.getElementById(`span-${idTask}`);
+    input.checked
+      ? utils.addAtributeOpacity(input, span)
+      : utils.removeAtributeOpacity(input, span);
+    //enviar informação para o backend
+    await fetch(location.href + `/${idTask}/${input.checked}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: idTask }),
+    }).catch((err) => console.error("erro ao alterar status de tarefa", err));
+  });
+});
+
+//AddEventListener aos buttons que execução as ações
 utils.btnActionViews(btnAction, runActionBtnTask);
 async function runActionBtnTask(actionBtn, idTask) {
   switch (actionBtn) {
@@ -61,14 +87,4 @@ btnCreateTask.addEventListener("click", async (ev) => {
       location.reload();
     })
     .catch((err) => console.error("erro criar nova tarefa", err));
-});
-
-//add atributo para efeito opaco quando a tarefa é realizada
-inputsCheckTask.forEach((input) => {
-  input.addEventListener("click", (ev) => {
-    let span = document.getElementById(`span-${input.value}`);
-    input.checked
-      ? utils.addAtributeOpacity(input, span)
-      : utils.removeAtributeOpacity(input, span);
-  });
 });

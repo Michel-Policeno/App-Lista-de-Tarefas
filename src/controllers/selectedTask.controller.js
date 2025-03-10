@@ -25,6 +25,11 @@ const tasksController = {
     task.delete(idTask);
     sendDataViews.viewsSelectedTask(idList, res);
   },
+  checkTask: (req, res) => {
+    const { idList, idTask, check } = req.params;
+    task.toggleCheckTask(idTask, check);
+    sendDataViews.viewsSelectedTask(idList, res);
+  },
 };
 
 module.exports = tasksController;
