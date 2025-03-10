@@ -55,6 +55,17 @@ const task = {
     //remove tarefa
     return tasks.splice(indexTaskDelete, 1);
   },
+
+  toggleCheckTask(idTaskCheck, statusTaskCheck) {
+    const indexTaskCheck = tasks.findIndex(
+      (task) => task.id === Number(idTaskCheck)
+    );
+    //verifica se alguma tarefa foi encontrada
+    if (indexTaskCheck === -1) {
+      return console.log("id não encontrado");
+    }
+    tasks[indexTaskCheck].check = statusTaskCheck;
+  },
 };
 
 module.exports = task;
