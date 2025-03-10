@@ -12,7 +12,7 @@ const tasks = [
 
 // id, nome, data_criacao, tarefa-feita(boleano), idLista(fk)
 const task = {
-  showAll(idTask) {
+  showAll() {
     return tasks;
   },
 
@@ -58,6 +58,7 @@ const task = {
     if (indexTaskCheck === -1) {
       return console.log("id não encontrado");
     }
+    //trocar status da tarefa
     tasks[indexTaskCheck].check = statusTaskCheck;
   },
 };
