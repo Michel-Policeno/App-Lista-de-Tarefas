@@ -13,7 +13,7 @@ const taskList = {
   show(idList) {
     const indexTask = findElementByID(idList, allTaskList);
     if (indexTask === -1) {
-      return console.log("id não encontrado");
+      return console.log(`${idList} - id lista não encontrada`);
     }
     return allTaskList[indexTask];
   },
@@ -39,7 +39,7 @@ const taskList = {
   update(idList, newNameTaskList) {
     const indexUpdate = findElementByID(idList, allTaskList);
     if (indexUpdate === -1) {
-      return console.log("id não encontrado");
+      return console.log(`${idList} - id lista não encontrada`);
     }
     //editar nome da listagem
     allTaskList[indexUpdate].name = newNameTaskList;
@@ -48,7 +48,7 @@ const taskList = {
   delete(idList) {
     const indexDelete = findElementByID(idList, allTaskList);
     if (indexDelete === -1) {
-      return console.log("id não encontrado");
+      return console.log(`${idList} - id lista não encontrada`);
     }
     //remover item da listagem
     return allTaskList.splice(indexDelete, 1);

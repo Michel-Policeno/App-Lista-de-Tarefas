@@ -31,3 +31,7 @@ input[name="opacity"],
 span[name="opacity"] {
   opacity: 50%;
 }
+
+#confirmDeleteModal {
+  color: black;
+}
