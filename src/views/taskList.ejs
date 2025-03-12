@@ -14,73 +14,62 @@
   <%- include('partials/header') %>
 
     <!-- Modal de Confirmação para deletar listagem -->
-    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteLabel"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="confirmDeleteLabel">Confirmar Exclusão</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>Tem certeza que deseja excluir essa listagem?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Excluir</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%- include('partials/modalDeleteTaskList') %>
 
-    <div class="container mt-5">
-      <div class="text-center">
-        <h1 class="fw-bold">Organize suas tarefas</h1>
-      </div>
+      <!-- Modal edição de listagem -->
+      <%- include('partials/modalEditName') %>
 
-      <!-- Criar Nova Lista -->
-      <div class="d-flex justify-content-center my-4">
-        <input type="text" class="form-control w-50 me-2" placeholder="Nome da nova lista de tarefas"
-          id="input-name-task" />
-        <button class="btn btn-primary" id="btn-new-Task-List">
-          Criar Nova Lista
-        </button>
-      </div>
-    </div>
+        <!-- Modal alerta para preenchimento obrigatorio nome da listagem -->
+        <%- include('partials/modalAlertNameNull') %>
 
-    <!-- Todas as listas de tarefas -->
-    <ol class="list-group list-group">
-      <% allTask.forEach((element)=> { %>
+          <div class="container mt-5">
+            <div class="text-center">
+              <h1 class="fw-bold">Organize suas tarefas</h1>
+            </div>
 
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto task-li">
-            <div class="fw-bold">
-              <%= element.name %>
-                <span class="badge text-bg-primary rounded-pill">
-                  <%= tasks.filter((task)=>task.idTaskList === element.id).length %>
-                </span>
+            <!-- Criar Nova Lista -->
+            <div class="d-flex justify-content-center my-4">
+              <input type="text" class="form-control w-50 me-2" placeholder="Nome da nova lista de tarefas"
+                id="input-name-task" />
+              <button class="btn btn-primary" id="btn-new-Task-List">
+                Criar Nova Lista
+              </button>
             </div>
           </div>
 
-          <div class="btn-actions">
-            <button type="button" class="btn btn-primary btn-action" id="abrir-<%= element.id%>">
-              Abrir
-            </button>
-            <button type="button" class="btn btn-warning btn-action" id="editar-<%= element.id%>">
-              Editar
-            </button>
-            <button type="button" class="btn btn-danger btn-action" id="delete-<%= element.id%>">
-              Excluir
-            </button>
-          </div>
-        </li>
-        <%})%>
-    </ol>
+          <!-- Todas as listas de tarefas -->
+          <ol class="list-group list-group">
+            <% allTask.forEach((element)=> { %>
 
-    <!-- footer fixo -->
-    <%- include('partials/footer') %>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-      <script type="module" src="/js/taskListAction.js"></script>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto task-li">
+                  <div class="fw-bold">
+                    <%= element.name %>
+                      <span class="badge text-bg-primary rounded-pill">
+                        <%= tasks.filter((task)=>task.idTaskList === element.id).length %>
+                      </span>
+                  </div>
+                </div>
+
+                <div class="btn-actions">
+                  <button type="button" class="btn btn-primary btn-action" id="abrir-<%= element.id%>">
+                    Abrir
+                  </button>
+                  <button type="button" class="btn btn-warning btn-action" id="editar-<%= element.id%>">
+                    Editar
+                  </button>
+                  <button type="button" class="btn btn-danger btn-action" id="delete-<%= element.id%>">
+                    Excluir
+                  </button>
+                </div>
+              </li>
+              <%})%>
+          </ol>
+
+          <!-- footer fixo -->
+          <%- include('partials/footer') %>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            <script type="module" src="/js/taskListAction.js"></script>
 
 </body>
 

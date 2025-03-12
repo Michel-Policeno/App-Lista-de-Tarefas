@@ -5,8 +5,15 @@ const domModalDelete = document.getElementById("confirmDeleteModal");
 const btnConfirmDelete = document.getElementById("confirmDeleteBtn");
 let modalDelete = new bootstrap.Modal(domModalDelete);
 let currentDeleteID = null; // Armazena o ID da cotação a ser deletada
+const domModalEditName = document.getElementById("confirmEditNameModal");
+const btnEditNameList = document.getElementById("confirmEditNameBtn");
+const newNameTaskList = document.getElementById("floatingInput");
+let modalEditNameTaskList = new bootstrap.Modal(domModalEditName);
+let currentEditID = null;
+const domAlertNameNullModal = document.getElementById("alertNameNullModal");
 import utils from "./utils.js";
 
+//modal delete task
 async function deleteListTask() {
   if (!currentDeleteID) return;
 
@@ -22,6 +29,34 @@ async function deleteListTask() {
 btnConfirmDelete.removeEventListener("click", deleteListTask);
 btnConfirmDelete.addEventListener("click", deleteListTask);
 
+//modal edit task
+async function editNameTaskList() {
+  if (!currentEditID) return;
+  if (!newNameTaskList.value.trim()) {
+    modalEditNameTaskList.hide();
+    const modalAlertNameNull = new bootstrap.Modal(domAlertNameNullModal);
+    modalAlertNameNull.show();
+    return;
+  }
+
+  await fetch(`/litagemtarefas/${currentEditID}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name: newNameTaskList.value }),
+  })
+    .then(() => {
+      location.reload(); // Recarregar a página para atualizar a lista
+    })
+    .catch((err) => console.error("erro ao editar", err));
+
+  modalEditNameTaskList.hide();
+}
+// Garante que sempre temos apenas um único evento no botão
+btnEditNameList.removeEventListener("click", editNameTaskList);
+btnEditNameList.addEventListener("click", editNameTaskList);
+
 //AddEventListener as buttons que execução as ações
 utils.btnActionViews(btnAction, runActionBtn);
 async function runActionBtn(actionBtn, iDBtn) {
@@ -36,24 +71,8 @@ async function runActionBtn(actionBtn, iDBtn) {
       break;
 
     case "editar":
-      const newName = prompt("Digite o novo nome da Lista");
-      if (!newName) {
-        alert("O nome da lista não pode estar vazio!");
-        return;
-      }
-
-      await fetch(`/litagemtarefas/${iDBtn}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: newName }),
-      })
-        .then(() => {
-          location.reload(); // Recarregar a página para atualizar a lista
-        })
-        .catch((err) => console.error("erro ao editar", err));
-
+      currentEditID = iDBtn;
+      modalEditNameTaskList.show();
       break;
     default:
       alert("opção invalida");
@@ -66,7 +85,9 @@ async function runActionBtn(actionBtn, iDBtn) {
 btnNewTaskList.addEventListener("click", async () => {
   let nameNewTaskList = inputNameTaskList.value;
   if (!nameNewTaskList.trim()) {
-    nameNewTaskList = "listagem de tarefa sem nome";
+    const modalAlertNameNull = new bootstrap.Modal(domAlertNameNullModal);
+    modalAlertNameNull.show();
+    return;
   }
   await fetch("/litagemtarefas/", {
     method: "POST",

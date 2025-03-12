@@ -32,6 +32,9 @@ span[name="opacity"] {
   opacity: 50%;
 }
 
-#confirmDeleteModal {
+/* modals */
+#confirmDeleteModal,
+#confirmEditNameModal,
+#alertNameNullModal {
   color: black;
 }
