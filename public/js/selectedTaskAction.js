@@ -3,6 +3,12 @@ const btnCreateTask = document.getElementById("btn-create-task");
 const inputNameTask = document.getElementById("input-name-task");
 const inputsCheckTask = document.querySelectorAll(".form-check-input");
 const taskCheckTrue = document.querySelectorAll(".check-true");
+const domAlertNameNullModal = document.getElementById("alertNameNullModal");
+const domModalEditName = document.getElementById("confirmEditNameModal");
+const btnEditNameList = document.getElementById("confirmEditNameBtn");
+const newNameTaskList = document.getElementById("floatingInput");
+let modalEditNameTaskList = new bootstrap.Modal(domModalEditName);
+let currentEditID = null;
 import utils from "./utils.js";
 
 //inicia adicionando efeito opacity nas tarefas marcadas anteriormente com feitas
@@ -30,28 +36,42 @@ inputsCheckTask.forEach((input) => {
   });
 });
 
+//modal edit task
+async function editNameTaskList() {
+  let newNameTask = newNameTaskList.value;
+  if (!currentEditID) return;
+  if (!newNameTask.trim()) {
+    modalEditNameTaskList.hide();
+    const modalAlertNameNull = new bootstrap.Modal(domAlertNameNullModal);
+    modalAlertNameNull.show();
+    return;
+  }
+  await fetch(location.href + `/${currentEditID}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ newName: newNameTask }),
+  })
+    .then(() => {
+      location.reload(); // Recarregar a página para atualizar a lista
+    })
+    .catch((err) => console.error("erro ao editar", err));
+
+  modalEditNameTaskList.hide();
+}
+
+// Garante que sempre temos apenas um único evento no botão
+btnEditNameList.removeEventListener("click", editNameTaskList);
+btnEditNameList.addEventListener("click", editNameTaskList);
+
 //AddEventListener aos buttons que execução as ações
 utils.btnActionViews(btnAction, runActionBtnTask);
 async function runActionBtnTask(actionBtn, idTask) {
   switch (actionBtn) {
     case "editar":
-      const newNameTask = prompt("Digite o novo nome da tarefa");
-      if (!newNameTask.trim()) {
-        alert("nome da tarefa inválido!");
-        return;
-      }
-      await fetch(location.href + `/${idTask}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ newName: newNameTask }),
-      })
-        .then(() => {
-          location.reload(); // Recarregar a página para atualizar a lista
-        })
-        .catch((err) => console.error("erro ao editar tarefa", err));
-
+      currentEditID = idTask;
+      modalEditNameTaskList.show();
       break;
     case "deletar":
       await fetch(location.href + `/${idTask}`, {
@@ -73,7 +93,9 @@ async function runActionBtnTask(actionBtn, idTask) {
 btnCreateTask.addEventListener("click", async (ev) => {
   const nameTask = inputNameTask.value;
   if (!nameTask.trim()) {
-    return alert("nome da tarefa é obrigatório");
+    const modalAlertNameNull = new bootstrap.Modal(domAlertNameNullModal);
+    modalAlertNameNull.show();
+    return;
   }
   await fetch(location.href, {
     //utilizando a url current para obter o id da lista que estamos acessando
