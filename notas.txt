@@ -1,7 +1,3 @@
-*criar pagina de erro, caso tenhamos uma solicitação não interpretada
-
-*modal personalizado
-  -nome da listagem na hora de excluir dentro do modal
 *Caso tenha nome igual adicionar um numero
 
 

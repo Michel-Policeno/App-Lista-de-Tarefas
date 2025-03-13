@@ -31,3 +31,10 @@ input[name="opacity"],
 span[name="opacity"] {
   opacity: 50%;
 }
+
+/* modals */
+#confirmDeleteModal,
+#confirmEditNameModal,
+#alertNameNullModal {
+  color: black;
+}

@@ -38,7 +38,7 @@ const task = {
   update(idUpdate, newName) {
     const indexUpdate = findElementByID(idUpdate, tasks);
     if (indexUpdate === -1) {
-      return console.log("id não encontrado");
+      return console.log(`${idUpdate} - id update não encontrado`);
     }
     //atualiza o nome da tarefa
     tasks[indexUpdate].name = newName;
@@ -47,7 +47,7 @@ const task = {
   delete(idDelete) {
     const indexDelete = findElementByID(idDelete, tasks);
     if (indexDelete === -1) {
-      return console.log("id não encontrado");
+      return console.log(`${idDelete} - id update não encontrado`);
     }
     //remove tarefa
     return tasks.splice(indexDelete, 1);
@@ -56,7 +56,7 @@ const task = {
   toggleCheckTask(idTaskCheck, statusTaskCheck) {
     const indexTaskCheck = findElementByID(idTaskCheck, tasks);
     if (indexTaskCheck === -1) {
-      return console.log("id não encontrado");
+      return console.log(`${idTaskCheck} - id task não encontrado`);
     }
     //trocar status da tarefa
     tasks[indexTaskCheck].check = statusTaskCheck;
