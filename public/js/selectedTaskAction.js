@@ -3,12 +3,12 @@ const btnCreateTask = document.getElementById("btn-create-task");
 const inputNameTask = document.getElementById("input-name-task");
 const inputsCheckTask = document.querySelectorAll(".form-check-input");
 const taskCheckTrue = document.querySelectorAll(".check-true");
-const domAlertNameNullModal = document.getElementById("alertNameNullModal");
 const domModalEditName = document.getElementById("confirmEditNameModal");
 const btnEditNameList = document.getElementById("confirmEditNameBtn");
 const newNameTaskList = document.getElementById("floatingInput");
 let modalEditNameTaskList = new bootstrap.Modal(domModalEditName);
 let currentEditID = null;
+import { showModalAlertNameNull } from "./modals/modalAlert.js";
 import utils from "./utils.js";
 
 //inicia adicionando efeito opacity nas tarefas marcadas anteriormente com feitas
@@ -42,8 +42,7 @@ async function editNameTaskList() {
   if (!currentEditID) return;
   if (!newNameTask.trim()) {
     modalEditNameTaskList.hide();
-    const modalAlertNameNull = new bootstrap.Modal(domAlertNameNullModal);
-    modalAlertNameNull.show();
+    showModalAlertNameNull();
     return;
   }
   await fetch(location.href + `/${currentEditID}`, {
@@ -93,8 +92,7 @@ async function runActionBtnTask(actionBtn, idTask) {
 btnCreateTask.addEventListener("click", async (ev) => {
   const nameTask = inputNameTask.value;
   if (!nameTask.trim()) {
-    const modalAlertNameNull = new bootstrap.Modal(domAlertNameNullModal);
-    modalAlertNameNull.show();
+    showModalAlertNameNull();
     return;
   }
   await fetch(location.href, {
