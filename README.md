@@ -5,9 +5,13 @@ Aplicação web para gerenciamento de listas de tarefas, desenvolvida utilizando
 A interface é construída com **Bootstrap**, garantindo responsividade e um design agradável.
 
 ## 📌 Funcionalidades
+
 ✅ Criar, editar e remover listas de tarefas
+
 ✅ Adicionar e gerenciar tarefas dentro de uma lista
+
 ✅ Marcar tarefas como concluídas
+
 ✅ Exibir listas e tarefas agrupadas
 
 ## 🛠 Instalação e Configuração
